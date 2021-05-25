@@ -1,0 +1,18 @@
+apiVersion: agent-install.openshift.io/v1beta1
+kind: InfraEnv
+metadata:
+  name: sno00230
+  namespace: sno00230
+spec:
+  clusterRef:
+    name: sno00230
+    namespace: sno00230
+  sshAuthorizedKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDPIX8w4Whwzug6dtQtHpnIXKFCXArk5u3nP+zIDLzyHA9GP61+CAyda/7/JMKqIzV2InhuiDlRTsKVg8R4gAnqZMJVK6A6P6TQuRFV23yUlI3ztmk+kWuCk00RGKtfQvDdNpySjn6D1JuNasO/lZ/3PIdAaxuc3uzP5fnFSyxCKQ== root@f36-h21-000-r640.rdu2.scalelab.redhat.com'
+  agentLabelSelector:
+    matchLabels:
+      cluster-name: sno00230
+  pullSecretRef:
+    name: assisted-deployment-pull-secret
+  nmStateConfigLabelSelector:
+    matchLabels:
+      acm-ai-sno-test-sno00230: sno00230

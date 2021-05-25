@@ -1,0 +1,38 @@
+apiVersion: hive.openshift.io/v1
+kind: ClusterDeployment
+metadata:
+  name: sno00201
+  namespace: sno00201
+spec:
+  baseDomain: rdu2.scalelab.redhat.com
+  clusterName: sno00201
+  platform:
+    agentBareMetal:
+      apiVIP: ""
+      ingressVIP: ""
+      vipDHCPAllocation: "Enabled"
+      agentSelector:
+        matchLabels:
+          cluster-name: sno00201
+  provisioning:
+    imageSetRef:
+      name: "openshift-4.8.0-fc.3"
+    installStrategy:
+      agent:
+        sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDPIX8w4Whwzug6dtQtHpnIXKFCXArk5u3nP+zIDLzyHA9GP61+CAyda/7/JMKqIzV2InhuiDlRTsKVg8R4gAnqZMJVK6A6P6TQuRFV23yUlI3ztmk+kWuCk00RGKtfQvDdNpySjn6D1JuNasO/lZ/3PIdAaxuc3uzP5fnFSyxCKQ== root@f36-h21-000-r640.rdu2.scalelab.redhat.com'
+        networking:
+          clusterNetwork:
+            - cidr: 10.128.0.0/14
+              hostPrefix: 23
+          serviceNetwork:
+            - 172.30.0.0/16
+          machineNetwork:
+            - cidr: 198.18.8.0/21
+        provisionRequirements:
+          controlPlaneAgents: 1
+          workerAgents: 0
+        agentSelector:
+          matchLabels:
+            cluster-name: sno00201
+  pullSecretRef:
+    name: assisted-deployment-pull-secret
